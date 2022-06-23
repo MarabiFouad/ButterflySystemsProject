@@ -23,3 +23,5 @@ In order to activate CORS you need to modify the config file `appsettings.prod.j
     "Origin": "https://yourdomain.com"
   }
 ```
+![image](https://user-images.githubusercontent.com/23233827/175276070-175f4805-a853-4251-bed3-e4c13063f2ea.png)
+![image](https://user-images.githubusercontent.com/23233827/175276101-202cd18d-7e61-4d7b-983b-e4c49184aa0b.png)
