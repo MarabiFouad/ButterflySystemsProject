@@ -22,12 +22,12 @@ function App() {
   const CalculateResult = async (operator) => {
     setData(null);
     setError(null);
-    setShowLoding(true);
+
     !number1 ? setIsValidNumber1(false) : setIsValidNumber1(true);
     !number2 ? setIsValidNumber2(false) : setIsValidNumber2(true);
 
     if (!number1 || !number2) return;
-
+    setShowLoding(true);
     await axios
       .get(
         `${BaseUrl}calculator/${operator}?number1=${number1}&number2=${number2}`
