@@ -1,8 +1,4 @@
 ﻿using ButterflySystems.Core.Services.Contracts;
-using ButterflySystems.Models.Enums;
-using ButterflySystems.Models.Errors;
-using ButterflySystems.Models.Exceptions;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 /// <summary>

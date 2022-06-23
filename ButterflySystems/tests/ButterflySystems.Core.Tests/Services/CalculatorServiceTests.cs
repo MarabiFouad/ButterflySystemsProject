@@ -1,7 +1,6 @@
 using ButterflySystems.Core.Services;
 using ButterflySystems.Core.Services.Contracts;
 using ButterflySystems.Models.Exceptions;
-using Moq;
 using System;
 using System.Collections.Generic;
 using System.Threading;
