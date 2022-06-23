@@ -4,6 +4,7 @@ using ButterflySystems.Models.Exceptions;
 using Moq;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -26,7 +27,7 @@ namespace ButterflySystems.Core.Tests.Services
             decimal expected = 3;
 
             //act
-            var actual = await _calculatorService.Add(number1, number2);
+            var actual = await _calculatorService.Add(number1, number2, CancellationToken.None);
 
             //Assert
             Assert.NotNull(actual);
@@ -48,7 +49,7 @@ namespace ButterflySystems.Core.Tests.Services
             // arrange
 
             //act
-            var actual = await _calculatorService.Add(number1, number2);
+            var actual = await _calculatorService.Add(number1, number2, CancellationToken.None);
 
             //Assert
             Assert.NotNull(actual);
@@ -64,7 +65,7 @@ namespace ButterflySystems.Core.Tests.Services
             decimal expected = -1;
 
             //act
-            var actual = await _calculatorService.Subtract(number1, number2);
+            var actual = await _calculatorService.Subtract(number1, number2, CancellationToken.None);
 
             //Assert
             Assert.NotNull(actual);
@@ -89,7 +90,7 @@ namespace ButterflySystems.Core.Tests.Services
             // arrange
 
             //act
-            var actual = await _calculatorService.Subtract(number1, number2);
+            var actual = await _calculatorService.Subtract(number1, number2, CancellationToken.None);
 
             //Assert
             Assert.NotNull(actual);
@@ -105,7 +106,7 @@ namespace ButterflySystems.Core.Tests.Services
             decimal expected = 2;
 
             //act
-            var actual = await _calculatorService.Multiply(number1, number2);
+            var actual = await _calculatorService.Multiply(number1, number2, CancellationToken.None);
 
             //Assert
             Assert.NotNull(actual);
@@ -129,7 +130,7 @@ namespace ButterflySystems.Core.Tests.Services
             // arrange
 
             //act
-            var actual = await _calculatorService.Multiply(number1, number2);
+            var actual = await _calculatorService.Multiply(number1, number2, CancellationToken.None);
 
             //Assert
             Assert.NotNull(actual);
@@ -145,7 +146,7 @@ namespace ButterflySystems.Core.Tests.Services
             decimal number2 = decimal.MaxValue;
 
             //act
-            Func<Task> act = async () => await _calculatorService.Multiply(number1, number2);
+            Func<Task> act = async () => await _calculatorService.Multiply(number1, number2, CancellationToken.None);
 
             //Assert
             await Assert.ThrowsAsync<OverflowException>(act);
@@ -160,7 +161,7 @@ namespace ButterflySystems.Core.Tests.Services
             decimal expected = 0.5m;
 
             //act
-            var actual = await _calculatorService.Divide(number1, number2);
+            var actual = await _calculatorService.Divide(number1, number2, CancellationToken.None);
 
             //Assert
             Assert.NotNull(actual);
@@ -183,7 +184,7 @@ namespace ButterflySystems.Core.Tests.Services
             // arrange
 
             //act
-            var actual = await _calculatorService.Divide(number1, number2);
+            var actual = await _calculatorService.Divide(number1, number2, CancellationToken.None);
 
             //Assert
             Assert.NotNull(actual);
@@ -198,7 +199,7 @@ namespace ButterflySystems.Core.Tests.Services
             decimal number2 = 0;
 
             //act
-            Func<Task> act = async () => await _calculatorService.Divide(number1, number2);
+            Func<Task> act = async () => await _calculatorService.Divide(number1, number2, CancellationToken.None);
 
             //Assert
             var ex = await Assert.ThrowsAsync<ButterflySystemsException>(act);
