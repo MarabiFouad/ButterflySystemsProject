@@ -16,7 +16,7 @@ REACT_APP_SERVER_URL= http://localhost:5218
 ## CORS config
 
 In order to activate CORS you need to modify the config file `appsettings.prod.json` as following:
-Origin:comma seperated allowed domain. ex. http://localhost:3000,http://localhost:3500
+Origin:comma seperated allowed domain. e.g. http://localhost:3000,http://localhost:3500
 
 ```
   "CORS": {
