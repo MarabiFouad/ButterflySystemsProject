@@ -23,13 +23,13 @@ In order to activate CORS you need to modify the config file `appsettings.prod.j
     "Origin": "https://yourdomain.com"
   }
 ```
-## Solution
+## Web Api Solution
 ![image](https://user-images.githubusercontent.com/23233827/175276070-175f4805-a853-4251-bed3-e4c13063f2ea.png)
 
 ## CLient App
 ![image](https://user-images.githubusercontent.com/23233827/175276101-202cd18d-7e61-4d7b-983b-e4c49184aa0b.png)
 
 ## Swagger OpenApi
-### URL: http://localhost:5218/swagger/index.html available on development environemnt
+### URL: http://localhost:5218/swagger/index.html only available on development environemnt
 ![image](https://user-images.githubusercontent.com/23233827/175282393-1b48cbf1-01aa-4f8d-873b-05cf5cc12f20.png)
 
