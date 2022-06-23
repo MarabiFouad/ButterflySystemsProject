@@ -1,24 +1,10 @@
 using ButterflySystems.API.Controllers.V1;
-using ButterflySystems.API.Middlewares;
 using ButterflySystems.Core.Services.Contracts;
-using ButterflySystems.Models.Enums;
-using ButterflySystems.Models.Exceptions;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.TestHost;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Moq;
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
-using ButterflySystems.Core.Extensions;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.VisualStudio.TestPlatform.TestHost;
-using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.AspNetCore.Builder;
-using ButterflySystems.Core.IoC;
-using System.Net;
+
 
 namespace ButterflySystems.API.Tests
 {
