@@ -3,8 +3,8 @@
 
 ## This repository contains two projects:
 
- 1. ButterflySystems: asp web api project 
- 2. ClientApp: developed in ReactJS. 
+ 1. ButterflySystems: ASP Web Api
+ 2. ClientApp: ReactJS
 
 ## In case client app cannot connect to the server follow below guideline:
 
