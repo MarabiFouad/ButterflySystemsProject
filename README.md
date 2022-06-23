@@ -3,7 +3,7 @@
  1. ButterflySystems: asp web api project 
  2. ClientApp: developed in ReactJS. 
 
-# In case of port issue follow the guideline below:
+# In case client app cannot connect to the server:
 
 To run the projects, you need to make sure that ClientApp is pointing to the right url. First run the web api project and replace the server url in environment variable inside .env file in the ClientApp root folder.
 
