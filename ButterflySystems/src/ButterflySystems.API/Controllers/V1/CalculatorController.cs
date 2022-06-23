@@ -2,7 +2,7 @@
 using ButterflySystems.Models.DTOs;
 using ButterflySystems.Models.Errors;
 using Microsoft.AspNetCore.Mvc;
-
+using System.Net.Mime;
 
 /// <summary>
 /// Exceptions are handeled in the middleware 
@@ -22,6 +22,7 @@ namespace ButterflySystems.API.Controllers.V1
         }
 
         [HttpGet("add")]
+        [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK,Type = typeof(CalculationResponse))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(Error))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(Error))]
@@ -31,6 +32,7 @@ namespace ButterflySystems.API.Controllers.V1
         }
 
         [HttpGet("subtract")]
+        [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CalculationResponse))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(Error))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(Error))]
@@ -40,6 +42,7 @@ namespace ButterflySystems.API.Controllers.V1
         }
 
         [HttpGet("multiply")]
+        [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CalculationResponse))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(Error))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(Error))]
@@ -49,6 +52,7 @@ namespace ButterflySystems.API.Controllers.V1
         }
 
         [HttpGet("divide")]
+        [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CalculationResponse))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(Error))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(Error))]
