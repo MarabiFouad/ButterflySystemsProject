@@ -28,7 +28,7 @@ namespace ButterflySystems.API.Controllers.V1
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Add(decimal number1, decimal number2, CancellationToken cancellationToken)
         {
-            return Ok(await _calculatorService.Add(number1, number2));
+            return Ok(await _calculatorService.Add(number1, number2, cancellationToken));
         }
 
         [HttpGet("subtract")]
@@ -37,7 +37,7 @@ namespace ButterflySystems.API.Controllers.V1
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Subtract(decimal number1, decimal number2, CancellationToken cancellationToken)
         {
-            return Ok(await _calculatorService.Subtract(number1, number2));
+            return Ok(await _calculatorService.Subtract(number1, number2, cancellationToken));
         }
 
         [HttpGet("multiply")]
@@ -46,7 +46,7 @@ namespace ButterflySystems.API.Controllers.V1
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Multiply(decimal number1, decimal number2, CancellationToken cancellationToken)
         {
-            return Ok(await _calculatorService.Multiply(number1, number2));
+            return Ok(await _calculatorService.Multiply(number1, number2, cancellationToken));
         }
 
         [HttpGet("divide")]
@@ -55,7 +55,7 @@ namespace ButterflySystems.API.Controllers.V1
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Divide(decimal number1, decimal number2, CancellationToken cancellationToken)
         {
-            return Ok(await _calculatorService.Divide(number1, number2));
+            return Ok(await _calculatorService.Divide(number1, number2, cancellationToken));
         }
     }
 }
