@@ -20,7 +20,7 @@ In order to activate CORS you need to modify the config file `appsettings.prod.j
 ```
   "CORS": {
     "ActivePolicy": "Restricted",
-    "Origin": "https://yourdomain.com"
+    "Origin": "https://serverdomain.com"
   }
 ```
 ## Web Api Solution
