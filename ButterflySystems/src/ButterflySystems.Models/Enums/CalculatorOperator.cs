@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ButterflySystems.Models.Enums
 {
-    public enum CalculatorOperator
+    public enum Operator
     {
         [Description("+")]
         Add = 0,

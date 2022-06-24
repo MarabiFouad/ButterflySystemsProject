@@ -53,7 +53,7 @@ namespace ButterflySystems.Core.Services.Contracts
         /// <param name="number2"></param>
         /// <param name="operator"></param>
         /// <returns></returns>
-        CalculationResponse FormatResponse(decimal result, decimal number1, decimal number2, CalculatorOperator @operator);
+        CalculationResponse FormatResponse(decimal result, decimal number1, decimal number2, Operator @operator);
 
     }
 }

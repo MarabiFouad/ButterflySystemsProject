@@ -14,7 +14,7 @@ namespace ButterflySystems.Core.Services
     {
         public async Task<CalculationResponse> Add(decimal number1, decimal number2, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return FormatResponse(await Task.FromResult(number1 + number2), number1, number2, CalculatorOperator.Add);
+            return FormatResponse(await Task.FromResult(number1 + number2), number1, number2, Operator.Add);
         }
 
         public async Task<CalculationResponse> Divide(decimal number1, decimal number2, CancellationToken cancellationToken = default(CancellationToken))
@@ -22,20 +22,20 @@ namespace ButterflySystems.Core.Services
             if (number2 == 0)
                 throw new ButterflySystemsException("Divide by zero error.", $"A validation error occurred while dividing number1:{number1} & number2:{number2}.", ErrorCode.DivideByZero);
 
-            return FormatResponse(await Task.FromResult(number1 / number2), number1, number2, CalculatorOperator.Divide);
+            return FormatResponse(await Task.FromResult(number1 / number2), number1, number2, Operator.Divide);
         }
 
         public async Task<CalculationResponse> Multiply(decimal number1, decimal number2, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return FormatResponse(await Task.FromResult(number1 * number2), number1, number2, CalculatorOperator.Multiply);
+            return FormatResponse(await Task.FromResult(number1 * number2), number1, number2, Operator.Multiply);
         }
 
         public async Task<CalculationResponse> Subtract(decimal number1, decimal number2, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return FormatResponse(await Task.FromResult(number1 - number2), number1, number2, CalculatorOperator.Subtract);
+            return FormatResponse(await Task.FromResult(number1 - number2), number1, number2, Operator.Subtract);
         }
 
-        public CalculationResponse FormatResponse(decimal result, decimal number1, decimal number2, CalculatorOperator @operator)
+        public CalculationResponse FormatResponse(decimal result, decimal number1, decimal number2, Operator @operator)
         {
             return new CalculationResponse
             {
