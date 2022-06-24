@@ -14,7 +14,7 @@ namespace ButterflySystems.Core.IoC
             services.AddScoped<DivideOperator>();
             services.AddScoped<IMathStrategy, MathStrategy>();
             services.AddScoped<IMathStrategyFactory, MathStrategyFactory>();
-            services.AddScoped(provider =>
+            services.AddScoped<IMathOperator[]>(provider =>
             {
                 var factory = (IMathStrategyFactory)provider.GetService(typeof(IMathStrategyFactory));
                 return factory.Create();

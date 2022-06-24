@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace ButterflySystems.Core.Services.Contracts
 {
+    /// <summary>
+    /// Any math opertor will implement IMathOperator interface
+    /// </summary>
     public interface IMathOperator
     {
         Operator Operator { get; }

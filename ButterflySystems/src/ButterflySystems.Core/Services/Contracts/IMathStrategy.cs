@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace ButterflySystems.Core.Services.Contracts
 {
+    /// <summary>
+    /// Client will not care about implementation and this allows for single responsibility
+    /// </summary>
     public interface IMathStrategy
     {
         Task<CalculationResponse> Calculate(decimal number1, decimal number2, Operator op, CancellationToken ct = default(CancellationToken));
