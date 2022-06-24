@@ -32,4 +32,7 @@ Origin:comma seperated allowed domain. e.g. http://localhost:3000,http://localho
 
 ## Swagger OpenApi
 ### URL: http://localhost:5218/swagger/index.html only available on development environemnt
-![Web capture_23-6-2022_15270_localhost](https://user-images.githubusercontent.com/23233827/175288361-a10fddb8-ff2c-4b4c-9a3d-f082872b03e4.jpeg)
+#### Simple calculator service
+![image](https://user-images.githubusercontent.com/23233827/175500215-d0098bec-90e2-47af-bffd-a8f6475d1bd2.png)
+#### Startegy and factory design patterns
+![image](https://user-images.githubusercontent.com/23233827/175500303-4dd57624-1c49-4550-b3ac-3d5cad30c268.png)
