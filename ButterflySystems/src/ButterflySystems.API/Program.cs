@@ -43,7 +43,7 @@ services.AddSwaggerGen(c =>
     {
         Version = "v1",
         Title = "Butterfly Systems API",
-        Description = "The API provided by ButterflySystems",
+        Description = "The API provided by ButterflySystems using CalculatorService",
         TermsOfService = new Uri("https://butterfly.systems/terms"),
         Contact = new OpenApiContact
         {
@@ -61,7 +61,7 @@ services.AddSwaggerGen(c =>
     {
         Version = "v2",
         Title = "Butterfly Systems API",
-        Description = "The API provided by ButterflySystems",
+        Description = "The API provided by ButterflySystems using startegy and factory design patterns",
         TermsOfService = new Uri("https://butterfly.systems/terms"),
         Contact = new OpenApiContact
         {
@@ -75,7 +75,7 @@ services.AddSwaggerGen(c =>
             Url = new Uri("https://butterfly.systems/license"),
         }
     });
-    //c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
+    c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
 });
 
 
