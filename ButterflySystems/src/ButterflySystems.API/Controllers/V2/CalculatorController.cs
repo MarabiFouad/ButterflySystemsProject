@@ -28,7 +28,7 @@ namespace ButterflySystems.API.Controllers.V2
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CalculationResponse))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(Error))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(Error))]
-        public async Task<IActionResult> Add(decimal number1, decimal number2, CancellationToken ct)
+        public async Task<IActionResult> Add([FromQuery] decimal number1, [FromQuery] decimal number2, CancellationToken ct)
         {
             return Ok(await _mathStrategy.Calculate(number1, number2, Operator.Add, ct));
         }
@@ -38,7 +38,7 @@ namespace ButterflySystems.API.Controllers.V2
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CalculationResponse))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(Error))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(Error))]
-        public async Task<IActionResult> Subtract(decimal number1, decimal number2, CancellationToken ct)
+        public async Task<IActionResult> Subtract([FromQuery] decimal number1, [FromQuery] decimal number2, CancellationToken ct)
         {
             return Ok(await _mathStrategy.Calculate(number1, number2,Operator.Subtract, ct));
         }
@@ -48,7 +48,7 @@ namespace ButterflySystems.API.Controllers.V2
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CalculationResponse))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(Error))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(Error))]
-        public async Task<IActionResult> Multiply(decimal number1, decimal number2, CancellationToken ct)
+        public async Task<IActionResult> Multiply([FromQuery] decimal number1, [FromQuery] decimal number2, CancellationToken ct)
         {
             return Ok(await _mathStrategy.Calculate(number1, number2, Operator.Multiply, ct));
         }
@@ -58,7 +58,7 @@ namespace ButterflySystems.API.Controllers.V2
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CalculationResponse))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(Error))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(Error))]
-        public async Task<IActionResult> Divide(decimal number1, decimal number2, CancellationToken ct)
+        public async Task<IActionResult> Divide([FromQuery] decimal number1, [FromQuery] decimal number2, CancellationToken ct)
         {
             return Ok(await _mathStrategy.Calculate(number1, number2, Operator.Divide, ct));
         }
