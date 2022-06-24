@@ -57,6 +57,25 @@ services.AddSwaggerGen(c =>
             Url = new Uri("https://butterfly.systems/license"),
         }
     });
+    c.SwaggerDoc("v2", new OpenApiInfo
+    {
+        Version = "v2",
+        Title = "Butterfly Systems API",
+        Description = "The API provided by ButterflySystems",
+        TermsOfService = new Uri("https://butterfly.systems/terms"),
+        Contact = new OpenApiContact
+        {
+            Name = "Butterfly Systems API",
+            Email = "info@butterfly.systems",
+            Url = new Uri("https://butterfly.systems/contact"),
+        },
+        License = new OpenApiLicense
+        {
+            Name = "Butterfly Systems API license",
+            Url = new Uri("https://butterfly.systems/license"),
+        }
+    });
+    //c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
 });
 
 
@@ -97,6 +116,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(c =>
                 {
                     c.SwaggerEndpoint($"/swagger/v1/swagger.json", "ButterflySystems API V1");
+                    c.SwaggerEndpoint($"/swagger/v2/swagger.json", "ButterflySystems API V2");
                 });
 }
 
