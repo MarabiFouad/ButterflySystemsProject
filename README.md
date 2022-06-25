@@ -16,6 +16,7 @@ REACT_APP_SERVER_URL= http://localhost:5218
 ## CORS config
 
 By default server will allows all domains but in order to allow only your domain and activate CORS, you need to modify the config file `appsettings.prod.json` as following and set `ASPNETCORE_ENVIRONMENT` to `Production` and `ENV` to `prod`:
+
 Origin:comma seperated domains. e.g. http://localhost:3000,http://localhost:3500
 
 ```
