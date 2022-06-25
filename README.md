@@ -13,7 +13,7 @@ To run the projects, you need to make sure that ClientApp is pointing to the rig
 REACT_APP_SERVER_URL= http://localhost:5218
 
 
-## CORS config
+## CORS config and deploy to production
 
 By default server will allows all domains but in order to allow only your domain and activate CORS, you need to modify the config file `appsettings.prod.json` as following and set `ASPNETCORE_ENVIRONMENT` to `Production` and `ENV` to `prod`:
 
