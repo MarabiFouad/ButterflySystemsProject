@@ -61,7 +61,7 @@ services.AddSwaggerGen(c =>
     {
         Version = "v2",
         Title = "Butterfly Systems API",
-        Description = "The API provided by ButterflySystems using startegy and factory design patterns",
+        Description = "The API provided by ButterflySystems using strategy and factory design patterns",
         TermsOfService = new Uri("https://butterfly.systems/terms"),
         Contact = new OpenApiContact
         {
