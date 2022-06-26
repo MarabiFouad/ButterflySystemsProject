@@ -1,5 +1,6 @@
 using ButterflySystems.Core.Services;
 using ButterflySystems.Core.Services.Contracts;
+using ButterflySystems.Models.DTOs;
 using ButterflySystems.Models.Exceptions;
 using System;
 using System.Collections.Generic;
@@ -21,17 +22,35 @@ namespace ButterflySystems.Core.Tests.Services
         public async Task Add()
         {
             // arrange
-            decimal number1 = 1;
-            decimal number2 = 2;
+            var request = new CalculationRequest
+            {
+                Number1 = 1,
+                Number2 = 2
+            };
+
             decimal expected = 3;
 
             //act
-            var actual = await _calculatorService.Add(number1, number2, CancellationToken.None);
+            var actual = await _calculatorService.Add(request, CancellationToken.None);
 
             //Assert
             Assert.NotNull(actual);
             Assert.Equal(expected, actual.Result);
         }
+
+        [Fact]
+        public async Task CallingAddWithNullRequestShouldThrowsButterflySystemsException()
+        {
+            // arrange
+            
+
+            //act
+            Func<Task> act = async () => await _calculatorService.Add(null, CancellationToken.None);
+
+            //Assert
+            await Assert.ThrowsAsync<ButterflySystemsException>(act);
+        }
+
         public static IEnumerable<object[]> AddTestData =>
             new[] {
                 new object[] { 1m, 2m, 3m },
@@ -46,9 +65,14 @@ namespace ButterflySystems.Core.Tests.Services
         public async Task AddTwoNumbersShouldReturnExpectedValue(decimal number1, decimal number2, decimal expected)
         {
             // arrange
+            var request = new CalculationRequest
+            {
+                Number1 = number1,
+                Number2 = number2
+            };
 
             //act
-            var actual = await _calculatorService.Add(number1, number2, CancellationToken.None);
+            var actual = await _calculatorService.Add(request, CancellationToken.None);
 
             //Assert
             Assert.NotNull(actual);
@@ -59,17 +83,33 @@ namespace ButterflySystems.Core.Tests.Services
         public async Task Subtract()
         {
             // arrange
-            decimal number1 = 1;
-            decimal number2 = 2;
+            var request = new CalculationRequest
+            {
+                Number1 = 1,
+                Number2 = 2
+            };
             decimal expected = -1;
 
             //act
-            var actual = await _calculatorService.Subtract(number1, number2, CancellationToken.None);
+            var actual = await _calculatorService.Subtract(request, CancellationToken.None);
 
             //Assert
             Assert.NotNull(actual);
             Assert.Equal(expected, actual.Result);
 
+        }
+
+        [Fact]
+        public async Task CallingSubtractWithNullRequestShouldThrowsButterflySystemsException()
+        {
+            // arrange
+
+
+            //act
+            Func<Task> act = async () => await _calculatorService.Subtract(null, CancellationToken.None);
+
+            //Assert
+            await Assert.ThrowsAsync<ButterflySystemsException>(act);
         }
 
         public static IEnumerable<object[]> SubtractTestData => new[] {
@@ -87,9 +127,13 @@ namespace ButterflySystems.Core.Tests.Services
         public async Task SubtractTwoNumbersShouldReturnExpectedValue(decimal number1, decimal number2, decimal expected)
         {
             // arrange
-
+            var request = new CalculationRequest
+            {
+                Number1 = number1,
+                Number2 = number2
+            };
             //act
-            var actual = await _calculatorService.Subtract(number1, number2, CancellationToken.None);
+            var actual = await _calculatorService.Subtract(request, CancellationToken.None);
 
             //Assert
             Assert.NotNull(actual);
@@ -100,17 +144,34 @@ namespace ButterflySystems.Core.Tests.Services
         public async Task Multiply()
         {
             // arrange
-            decimal number1 = 1;
-            decimal number2 = 2;
+            var request = new CalculationRequest
+            {
+                Number1 = 1,
+                Number2 = 2
+            };
+
             decimal expected = 2;
 
             //act
-            var actual = await _calculatorService.Multiply(number1, number2, CancellationToken.None);
+            var actual = await _calculatorService.Multiply(request, CancellationToken.None);
 
             //Assert
             Assert.NotNull(actual);
             Assert.Equal(expected, actual.Result);
 
+        }
+
+        [Fact]
+        public async Task CallingMultiplyWithNullRequestShouldThrowsButterflySystemsException()
+        {
+            // arrange
+
+
+            //act
+            Func<Task> act = async () => await _calculatorService.Multiply(null, CancellationToken.None);
+
+            //Assert
+            await Assert.ThrowsAsync<ButterflySystemsException>(act);
         }
 
         public static IEnumerable<object[]> MultiplyTestData => new[] {
@@ -127,9 +188,14 @@ namespace ButterflySystems.Core.Tests.Services
         public async Task MultiplyTwoNumbersShouldReturnExpectedValue(decimal number1, decimal number2, decimal expected)
         {
             // arrange
+            var request = new CalculationRequest
+            {
+                Number1 = number1,
+                Number2 = number2
+            };
 
             //act
-            var actual = await _calculatorService.Multiply(number1, number2, CancellationToken.None);
+            var actual = await _calculatorService.Multiply(request, CancellationToken.None);
 
             //Assert
             Assert.NotNull(actual);
@@ -141,11 +207,14 @@ namespace ButterflySystems.Core.Tests.Services
         public async Task MultiplyTwoLargeNumbersWithLargeResultShouldThrowsOverflowException()
         {
             // arrange
-            decimal number1 = decimal.MaxValue;
-            decimal number2 = decimal.MaxValue;
+            var request = new CalculationRequest
+            {
+                Number1 = decimal.MaxValue,
+                Number2 = decimal.MaxValue
+            };
 
             //act
-            Func<Task> act = async () => await _calculatorService.Multiply(number1, number2, CancellationToken.None);
+            Func<Task> act = async () => await _calculatorService.Multiply(request, CancellationToken.None);
 
             //Assert
             await Assert.ThrowsAsync<OverflowException>(act);
@@ -155,17 +224,33 @@ namespace ButterflySystems.Core.Tests.Services
         public async Task Divide()
         {
             // arrange
-            decimal number1 = 1;
-            decimal number2 = 2;
+            var request = new CalculationRequest
+            {
+                Number1 = 1,
+                Number2 = 2
+            };
             decimal expected = 0.5m;
 
             //act
-            var actual = await _calculatorService.Divide(number1, number2, CancellationToken.None);
+            var actual = await _calculatorService.Divide(request, CancellationToken.None);
 
             //Assert
             Assert.NotNull(actual);
             Assert.Equal(expected, actual.Result);
 
+        }
+
+        [Fact]
+        public async Task CallingDivideWithNullRequestShouldThrowsButterflySystemsException()
+        {
+            // arrange
+
+
+            //act
+            Func<Task> act = async () => await _calculatorService.Divide(null, CancellationToken.None);
+
+            //Assert
+            await Assert.ThrowsAsync<ButterflySystemsException>(act);
         }
 
         public static IEnumerable<object[]> DivideTestData => new[] {
@@ -181,9 +266,13 @@ namespace ButterflySystems.Core.Tests.Services
         public async Task DivideTwoNumbersShouldReturnExpectedValue(decimal number1, decimal number2, decimal expected)
         {
             // arrange
-
+            var request = new CalculationRequest
+            {
+                Number1 = number1,
+                Number2 = number2
+            };
             //act
-            var actual = await _calculatorService.Divide(number1, number2, CancellationToken.None);
+            var actual = await _calculatorService.Divide(request, CancellationToken.None);
 
             //Assert
             Assert.NotNull(actual);
@@ -194,11 +283,14 @@ namespace ButterflySystems.Core.Tests.Services
         public async Task DivideByZeroShouldReturnDivideByZeroError()
         {
             // arrange
-            decimal number1 = 1;
-            decimal number2 = 0;
+            var request = new CalculationRequest
+            {
+                Number1 = 1,
+                Number2 = 0
+            };
 
             //act
-            Func<Task> act = async () => await _calculatorService.Divide(number1, number2, CancellationToken.None);
+            Func<Task> act = async () => await _calculatorService.Divide(request, CancellationToken.None);
 
             //Assert
             var ex = await Assert.ThrowsAsync<ButterflySystemsException>(act);

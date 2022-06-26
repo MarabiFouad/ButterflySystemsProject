@@ -8,6 +8,7 @@ namespace ButterflySystems.Models.Errors
     {
         InvalidInput = 1000,
         InvalidOperator = 1001,
-        DivideByZero = 1002
+        DivideByZero = 1002,
+        InvalidRequest = 1003
     }
 }

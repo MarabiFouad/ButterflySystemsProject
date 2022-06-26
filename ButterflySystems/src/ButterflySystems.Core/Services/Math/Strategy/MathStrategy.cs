@@ -1,4 +1,5 @@
-﻿using ButterflySystems.Core.Extensions;
+﻿using ButterflySystems.Core.Constants;
+using ButterflySystems.Core.Extensions;
 using ButterflySystems.Core.Services.Contracts;
 using ButterflySystems.Models.DTOs;
 using ButterflySystems.Models.Enums;
@@ -22,22 +23,25 @@ namespace ButterflySystems.Core.Services
             _operators = operators;
         }
 
-        public async Task<CalculationResponse> Calculate(decimal number1, decimal number2, Operator op, CancellationToken ct = default(CancellationToken))
+        public async Task<CalculationResponse> Calculate(CalculationRequest request, Operator op, CancellationToken ct = default(CancellationToken))
         {
+            if (request == null)
+                throw new ButterflySystemsException(ConstantValues.InvalidCalculationRequest, string.Format(ConstantValues.LogOperation, "calculating"), ErrorCode.InvalidRequest);
+
             var @operator = _operators.FirstOrDefault(x => x.Operator == op);
 
             if (@operator == null)
                 throw new ButterflySystemsException("Invalid operator", ErrorCode.InvalidOperator);
 
-            return FormatResponse(await @operator.Calculate(number1, number2, ct), number1, number2, @operator.Operator);
+            return FormatResponse(await @operator.Calculate(request.Number1, request.Number2, ct), request, @operator.Operator);
         }
 
-        public CalculationResponse FormatResponse(decimal result, decimal number1, decimal number2, Operator @operator)
+        public CalculationResponse FormatResponse(decimal result, CalculationRequest request, Operator @operator)
         {
             return new CalculationResponse
             {
-                Number1 = number1,
-                Number2 = number2,
+                Number1 = request.Number1,
+                Number2 = request.Number2,
                 Operator = @operator.GetDescription(),
                 Result = result
             };

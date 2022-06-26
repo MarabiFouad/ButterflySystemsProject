@@ -1,4 +1,5 @@
-﻿using ButterflySystems.Core.Extensions;
+﻿using ButterflySystems.Core.Constants;
+using ButterflySystems.Core.Extensions;
 using ButterflySystems.Core.Services.Contracts;
 using ButterflySystems.Models.DTOs;
 using ButterflySystems.Models.Enums;
@@ -12,35 +13,50 @@ namespace ButterflySystems.Core.Services
 
     public class CalculatorService : ICalculatorService
     {
-        public async Task<CalculationResponse> Add(decimal number1, decimal number2, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<CalculationResponse> Add(CalculationRequest request, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return FormatResponse(await Task.FromResult(number1 + number2), number1, number2, Operator.Add);
+            if (request == null)
+                throw new ButterflySystemsException(ConstantValues.InvalidCalculationRequest, string.Format(ConstantValues.LogOperation, "adding"), ErrorCode.InvalidRequest);
+
+            return FormatResponse(await Task.FromResult(request.Number1 + request.Number2), request, Operator.Add);
         }
 
-        public async Task<CalculationResponse> Divide(decimal number1, decimal number2, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<CalculationResponse> Divide(CalculationRequest request, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (number2 == 0)
-                throw new ButterflySystemsException("Divide by zero error.", $"A validation error occurred while dividing number1:{number1} & number2:{number2}.", ErrorCode.DivideByZero);
+            if (request == null)
+                throw new ButterflySystemsException(ConstantValues.InvalidCalculationRequest, string.Format(ConstantValues.LogOperation, "dividing"), ErrorCode.InvalidRequest);
 
-            return FormatResponse(await Task.FromResult(number1 / number2), number1, number2, Operator.Divide);
+            if (request.Number2 == 0)
+                throw new ButterflySystemsException("Divide by zero error.", string.Format(ConstantValues.LogOperation, $"dividing number1:{request.Number1} & number2:{request.Number2}"), ErrorCode.DivideByZero);
+
+            return FormatResponse(await Task.FromResult(request.Number1 / request.Number2), request, Operator.Divide);
         }
 
-        public async Task<CalculationResponse> Multiply(decimal number1, decimal number2, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<CalculationResponse> Multiply(CalculationRequest request, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return FormatResponse(await Task.FromResult(number1 * number2), number1, number2, Operator.Multiply);
+            if (request == null)
+                throw new ButterflySystemsException(ConstantValues.InvalidCalculationRequest, string.Format(ConstantValues.LogOperation, "multipling"), ErrorCode.InvalidRequest);
+
+            return FormatResponse(await Task.FromResult(request.Number1 * request.Number2), request, Operator.Multiply);
         }
 
-        public async Task<CalculationResponse> Subtract(decimal number1, decimal number2, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<CalculationResponse> Subtract(CalculationRequest request, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return FormatResponse(await Task.FromResult(number1 - number2), number1, number2, Operator.Subtract);
+            if (request == null)
+                throw new ButterflySystemsException(ConstantValues.InvalidCalculationRequest, string.Format(ConstantValues.LogOperation, "subtracting"), ErrorCode.InvalidRequest);
+
+            return FormatResponse(await Task.FromResult(request.Number1 - request.Number2), request, Operator.Subtract);
         }
 
-        public CalculationResponse FormatResponse(decimal result, decimal number1, decimal number2, Operator @operator)
+        public CalculationResponse FormatResponse(decimal result, CalculationRequest request, Operator @operator)
         {
+            if (request == null)
+                throw new ButterflySystemsException(ConstantValues.InvalidCalculationRequest, string.Format(ConstantValues.LogOperation, "formating response."), ErrorCode.InvalidRequest);
+
             return new CalculationResponse
             {
-                Number1 = number1,
-                Number2 = number2,
+                Number1 = request.Number1,
+                Number2 = request.Number2,
                 Operator = @operator.GetDescription(),
                 Result = result
             };
