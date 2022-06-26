@@ -11,49 +11,44 @@ namespace ButterflySystems.Core.Services.Contracts
     public interface ICalculatorService
     {
         /// <summary>
-        /// Add two decimal numbers
+        /// Add two nymbers
         /// </summary>
-        /// <param name="number1"></param>
-        /// <param name="number2"></param>
+        /// <param name="request"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<CalculationResponse> Add(decimal number1, decimal number2, CancellationToken cancellationToken = default(CancellationToken));
-
+        Task<CalculationResponse> Add(CalculationRequest request, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Subtract two decimal numbers
+        /// Subtract two numbers
         /// </summary>
-        /// <param name="number1"></param>
-        /// <param name="number2"></param>
+        /// <param name="request"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<CalculationResponse> Subtract(decimal number1, decimal number2, CancellationToken cancellationToken = default(CancellationToken));
+        Task<CalculationResponse> Subtract(CalculationRequest request, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Multiply two decimal numbers
+        /// Multiply two numbers
         /// </summary>
-        /// <param name="number1"></param>
-        /// <param name="number2"></param>
+        /// <param name="request"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<CalculationResponse> Multiply(decimal number1, decimal number2, CancellationToken cancellationToken = default(CancellationToken));
+        Task<CalculationResponse> Multiply(CalculationRequest request, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Divide two decimal numbers
+        /// Divide two numbers
         /// </summary>
-        /// <param name="number1"></param>
-        /// <param name="number2"></param>
+        /// <param name="request"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<CalculationResponse> Divide(decimal number1, decimal number2, CancellationToken cancellationToken = default(CancellationToken));
+        Task<CalculationResponse> Divide(CalculationRequest request, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Build the response with provided parameters
+        ///  Create CalculationResponse response with provided parameters
         /// </summary>
-        /// <param name="number1"></param>
-        /// <param name="number2"></param>
+        /// <param name="result"></param>
+        /// <param name="request"></param>
         /// <param name="operator"></param>
         /// <returns></returns>
-        CalculationResponse FormatResponse(decimal result, decimal number1, decimal number2, Operator @operator);
+        CalculationResponse FormatResponse(decimal result, CalculationRequest request, Operator @operator);
 
     }
 }

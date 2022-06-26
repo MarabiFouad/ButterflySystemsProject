@@ -1,12 +1,13 @@
 using ButterflySystems.API.Controllers.V1;
 using ButterflySystems.Core.Services.Contracts;
+using ButterflySystems.Models.DTOs;
 using Moq;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
 
-namespace ButterflySystems.API.Tests
+namespace ButterflySystems.API.Tests.Controllers.V1
 {
     public class CalculatorControllerTests
     {
@@ -23,56 +24,69 @@ namespace ButterflySystems.API.Tests
         public async Task WhenAddActionIsCalledCalculatorServiceAddMethodIsCalled()
         {
             // Arrange
-            decimal number1 = 1;
-            decimal number2 = 2;
+            var request = new CalculationRequest
+            {
+                Number1 = 1,
+                Number2 = 2
+            };
+
 
             // Act
-            await _calculatorController.Add(number1, number2, CancellationToken.None);
+            await _calculatorController.Add(request, CancellationToken.None);
 
             // Assert
-            _calculatorService.Verify(u => u.Add(number1, number2, CancellationToken.None), Times.Once);
+            _calculatorService.Verify(u => u.Add(request, CancellationToken.None), Times.Once);
         }
 
         [Fact]
         public async Task WhenSubtractActionIsCalledCalculatorServiceSubtractMethodIsCalled()
         {
             // Arrange
-            decimal number1 = 1;
-            decimal number2 = 2;
+            var request = new CalculationRequest
+            {
+                Number1 = 1,
+                Number2 = 2
+            };
 
             // Act
-            await _calculatorController.Subtract(number1, number2, CancellationToken.None);
+            await _calculatorController.Subtract(request, CancellationToken.None);
 
             // Assert
-            _calculatorService.Verify(u => u.Subtract(number1, number2, CancellationToken.None), Times.Once);
+            _calculatorService.Verify(u => u.Subtract(request, CancellationToken.None), Times.Once);
         }
 
         [Fact]
         public async Task WhenMultiplyActionIsCalledCalculatorServiceMultiplyMethodIsCalled()
         {
             // Arrange
-            decimal number1 = 1;
-            decimal number2 = 2;
+            var request = new CalculationRequest
+            {
+                Number1 = 1,
+                Number2 = 2
+            };
 
             // Act
-            await _calculatorController.Multiply(number1, number2, CancellationToken.None);
+            await _calculatorController.Multiply(request, CancellationToken.None);
 
             // Assert
-            _calculatorService.Verify(u => u.Multiply(number1, number2, CancellationToken.None), Times.Once);
+            _calculatorService.Verify(u => u.Multiply(request, CancellationToken.None), Times.Once);
         }
 
         [Fact]
         public async Task WhenDivideActionIsCalledCalculatorServiceDivideMethodIsCalled()
         {
             // Arrange
-            decimal number1 = 1;
-            decimal number2 = 2;
+            var request = new CalculationRequest
+            {
+                Number1 = 1,
+                Number2 = 2
+            };
 
             // Act
-            await _calculatorController.Divide(number1, number2, CancellationToken.None);
+            await _calculatorController.Divide(request, CancellationToken.None);
 
             // Assert
-            _calculatorService.Verify(u => u.Divide(number1, number2, CancellationToken.None), Times.Once);
+            _calculatorService.Verify(u => u.Divide(request, CancellationToken.None), Times.Once);
         }
 
     }

@@ -1,4 +1,5 @@
-﻿using ButterflySystems.Core.Services.Contracts;
+﻿using ButterflySystems.Core.Constants;
+using ButterflySystems.Core.Services.Contracts;
 using ButterflySystems.Models.Enums;
 using ButterflySystems.Models.Errors;
 using ButterflySystems.Models.Exceptions;
@@ -21,7 +22,7 @@ namespace ButterflySystems.Core.Services
             catch (DivideByZeroException ex)
             {
 
-                throw new ButterflySystemsException("Divide by zero error.", $"A validation error occurred while dividing number1:{number1} & number2:{number2}.", ErrorCode.DivideByZero);
+                throw new ButterflySystemsException("Divide by zero error.", string.Format(ConstantValues.LogOperation, $"dividing number1:{number1} & number2:{number2}"), ErrorCode.DivideByZero);
             }
 
         }

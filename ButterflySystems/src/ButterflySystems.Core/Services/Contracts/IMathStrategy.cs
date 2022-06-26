@@ -13,6 +13,6 @@ namespace ButterflySystems.Core.Services.Contracts
     /// </summary>
     public interface IMathStrategy
     {
-        Task<CalculationResponse> Calculate(decimal number1, decimal number2, Operator op, CancellationToken ct = default(CancellationToken));
+        Task<CalculationResponse> Calculate(CalculationRequest request, Operator op, CancellationToken ct = default(CancellationToken));
     }
 }
