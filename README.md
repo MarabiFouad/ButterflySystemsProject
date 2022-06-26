@@ -24,7 +24,7 @@ Origin:comma seperated domains. e.g. http://localhost:3000,http://localhost:3500
     "ActivePolicy": "Restricted",
     "Origin": "http://localhost:3000" 
   }
-```
+``` 
 ## Web Api Solution
 ![image](https://user-images.githubusercontent.com/23233827/175276070-175f4805-a853-4251-bed3-e4c13063f2ea.png)
 
