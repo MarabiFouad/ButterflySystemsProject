@@ -19,6 +19,11 @@ function App() {
   const [isValidNumber1, setIsValidNumber1] = useState(false);
   const [isValidNumber2, setIsValidNumber2] = useState(false);
   const [showLoding, setShowLoding] = useState(false);
+
+  const styles = {
+    whiteSpace: "nowrap",
+  };
+
   const CalculateResult = async (operator) => {
     setData(null);
     setError(null);
@@ -90,6 +95,7 @@ function App() {
             type="button"
             variant="contained"
             onClick={() => CalculateResult("add")}
+            fullWidth
           >
             Add (+)
           </Button>
@@ -97,6 +103,8 @@ function App() {
             type="button"
             variant="contained"
             onClick={() => CalculateResult("subtract")}
+            style={styles}
+            fullWidth
           >
             Subtract (-)
           </Button>
@@ -104,6 +112,8 @@ function App() {
             type="button"
             variant="contained"
             onClick={() => CalculateResult("multiply")}
+            style={styles}
+            fullWidth
           >
             Multiply (*)
           </Button>
@@ -111,6 +121,8 @@ function App() {
             type="button"
             variant="contained"
             onClick={() => CalculateResult("divide")}
+            style={styles}
+            fullWidth
           >
             Divide (/)
           </Button>
